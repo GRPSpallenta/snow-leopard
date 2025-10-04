@@ -1,0 +1,11 @@
+{
+  "name": "snow-leopard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:api": "npm --prefix api run dev",
+    "dev:web": "npm --prefix web run dev",
+    "build:api": "npm --prefix api run build",
+    "build:web": "npm --prefix web run build"
+  }
+}
