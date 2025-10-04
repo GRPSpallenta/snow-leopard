@@ -1,0 +1,90 @@
+-- 004_seed.sql
+-- Seed data: services catalog, countries, notification types
+
+-- Services (slug, name, category)
+insert into public.services (slug, name, category) values
+  ('additions-remodeling','Additions & Remodeling','Home Improvement'),
+  ('air-conditioning','Air Conditioning','HVAC'),
+  ('appliances','Appliances','Home Appliances'),
+  ('architects-engineers','Architects & Engineers','Professional Services'),
+  ('awnings','Awnings','Outdoor'),
+  ('brick-stone','Brick & Stone','Masonry'),
+  ('cabinets','Cabinets','Carpentry'),
+  ('carpenters','Carpenters','Carpentry'),
+  ('carpet-upholstery-cleaning','Carpet & Upholstery Cleaning','Cleaning'),
+  ('ceilings','Ceilings','Interior'),
+  ('cleaning-maid-services','Cleaning & Maid Services','Cleaning'),
+  ('concrete','Concrete','Masonry'),
+  ('countertops','Countertops','Interior'),
+  ('decks','Decks','Outdoor'),
+  ('designers-decorators','Designers & Decorators','Interior Design'),
+  ('docks','Docks','Outdoor'),
+  ('doors','Doors','Carpentry'),
+  ('drywall-plaster','Drywall & Plaster','Interior'),
+  ('electrical','Electrical','Electrical'),
+  ('excavation','Excavation','Construction'),
+  ('fans','Fans','Electrical'),
+  ('fences','Fences','Outdoor'),
+  ('fireplace-wood-stoves','Fireplace & Wood Stoves','Heating'),
+  ('flooring-carpet','Flooring & Carpet','Flooring'),
+  ('foundations','Foundations','Construction'),
+  ('fountains-ponds','Fountains & Ponds','Outdoor'),
+  ('furniture-repair-refinish','Furniture Repair & Refinish','Furniture'),
+  ('garage-doors','Garage & Garage Doors','Outdoor'),
+  ('glass-mirrors','Glass & Mirrors','Interior'),
+  ('gutters','Gutters','Exterior'),
+  ('handyman-services','Handyman Services','General'),
+  ('heating-furnace-systems','Heating & Furnace Systems','HVAC'),
+  ('home-inspection','Home Inspection','Professional Services'),
+  ('home-security-services','Home Security Services','Security'),
+  ('insulation','Insulation','HVAC'),
+  ('landscaping','Landscaping','Outdoor'),
+  ('lawn-garden-care','Lawn & Garden Care','Outdoor'),
+  ('metal-fabrication','Metal Fabrication','Fabrication'),
+  ('mold-asbestos-services','Mold & Asbestos Services','Environmental'),
+  ('moving','Moving','Logistics'),
+  ('outdoor-playgrounds','Outdoor Playgrounds','Outdoor'),
+  ('painting','Painting','Interior/Exterior'),
+  ('paving','Paving','Exterior'),
+  ('pest-control','Pest Control','Environmental'),
+  ('plumbing','Plumbing','Plumbing'),
+  ('powder-coating','Powder Coating','Fabrication'),
+  ('power-washing','Power Washing','Cleaning'),
+  ('roofing','Roofing','Exterior'),
+  ('septic-tanks-wells','Septic Tanks & Wells','Plumbing'),
+  ('boreholes','Boreholes','Plumbing'),
+  ('sheds-enclosures','Sheds & Enclosures','Outdoor'),
+  ('siding','Siding','Exterior'),
+  ('skylights','Skylights','Exterior'),
+  ('solar','Solar','Energy'),
+  ('swimming-pools','Swimming Pools','Outdoor'),
+  ('tile','Tile','Flooring'),
+  ('tree-service','Tree Service','Outdoor'),
+  ('waste-material-removal','Waste Material Removal','Environmental'),
+  ('water-treatment-system','Water Treatment System','Plumbing'),
+  ('window-coverings','Window Coverings','Interior'),
+  ('windows','Windows','Exterior')
+  on conflict (slug) do nothing;
+
+-- Countries
+insert into public.countries (code, name, default_currency, phone_country_code) values
+  ('BW','Botswana','BWP','+267'),
+  ('ZA','South Africa','ZAR','+27'),
+  ('ZW','Zimbabwe','ZWL','+263'),
+  ('NA','Namibia','NAD','+264'),
+  ('ZM','Zambia','ZMW','+260')
+  on conflict (code) do nothing;
+
+-- Notification types
+insert into public.notification_types (key, description, mandatory) values
+  ('job.new','New job posted', true),
+  ('proposal.received','Proposal received on your job', true),
+  ('proposal.accepted','Your proposal was accepted', true),
+  ('proposal.declined','Your proposal was declined', true),
+  ('job.start','Job started', true),
+  ('job.pause','Job paused', true),
+  ('job.complete','Job completed', true),
+  ('invoice.sent','Invoice sent to client', true),
+  ('invoice.received','Invoice received from professional', true),
+  ('payment.succeeded','Payment completed', true)
+  on conflict (key) do nothing;
